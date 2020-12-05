@@ -1,2 +1,7 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<h1>在庫一覧</h1>
+<%= link_to("新規登録", "/products/new", class:"btn btn-primary") %>
+
+<% @products.each do |product| %>
+  <%= product.name%>
+<% end %>
+
