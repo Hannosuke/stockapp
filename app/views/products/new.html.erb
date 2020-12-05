@@ -1,2 +1,8 @@
-<h1>Products#new</h1>
-<p>Find me in app/views/products/new.html.erb</p>
+<h1>商品情報登録</h1>
+<%= form_with(model:@product, local: true) do |f| %>
+  <%= f.label :商品コード%>
+  <%= f.text_field :product_code, class: "form-control" %>
+  <%= f.label :商品名%>
+  <%= f.text_field :name, class: "form-control" %>
+  <%= f.submit "登録", class: "btn btn-primary"%>
+<% end %>
