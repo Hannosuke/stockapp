@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new
+    @product = Product.new(product_params)
     if @product.save
       redirect_to("/")
     else
@@ -17,5 +17,24 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
   end
+
+  def update
+    @product.update
+    redirect_to("/")
+  end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to("/")
+  end
+
+  private
+
+  def product_params
+    params.require(:product).permit(:product_code, :name)
+  end
+
 end

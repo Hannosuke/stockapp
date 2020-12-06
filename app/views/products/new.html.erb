@@ -1,5 +1,6 @@
 <h1>商品情報登録</h1>
-<%= form_with(model:@product, local: true) do |f| %>
+<%= link_to("一覧に戻る", "/", class:"d-flex justify-content-end")%>
+<%= form_with(model: @product, local: true) do |f| %>
   <%= f.label :商品コード%>
   <%= f.text_field :product_code, class: "form-control" %>
   <%= f.label :商品名%>
