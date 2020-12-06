@@ -1,9 +1,25 @@
+<%= flash[:notice]%>
 <h1>在庫一覧</h1>
 <%= link_to("新規登録", "/products/new", class:"btn btn-primary") %>
 
-<% @products.each do |product| %>
-  <%= product.name%>
-  <%= link_to("編集", "/products/#{product.id}/edit", class:"btn btn-primary" )%>
-  <%= link_to("削除","/products/#{product.id}",{method: "DELETE", class:"btn btn-danger"}) %>
-<% end %>
+<table class="table">
+<thead>
+  <tr>
+      <th>商品コード</th>
+      <th>商品名</th>
+      <th></th>
+  </tr>
+</thead>
+<tbody>
+    <% @products.each do |product| %>
+        <tr>
+            <td><%= product.product_code%></td>
+            <td><%= product.name%></td>
+            <td><%= link_to("編集", "/products/#{product.id}/edit", class:"btn btn-primary" )%>
+            <%= link_to("削除","/products/#{product.id}",{method: "DELETE", data: {confirm: "削除しますか？"}, class:"btn btn-danger"}) %>
+            </td>
+        </tr>
+    <% end %>
+</tbody>
+</table>
 

@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
+      flash[:notice] = "商品情報を登録しました"
       redirect_to("/")
     else
       render :new
@@ -21,7 +22,8 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product.update
+    @product = Product.find(params[:id])
+    @product.update(product_params)
     redirect_to("/")
   end
 
