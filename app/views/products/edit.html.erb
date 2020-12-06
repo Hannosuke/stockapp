@@ -1,2 +1,9 @@
-<h1>Products#edit</h1>
-<p>Find me in app/views/products/edit.html.erb</p>
+<h1>編集</h1>
+<%= link_to("一覧に戻る", "/", class:"d-flex justify-content-end")%>
+<%= form_with(method: :PATCH, model: @product, local: true) do |f| %>
+  <%= f.label :商品コード%>
+  <%= f.text_field :product_code, class: "form-control" %>
+  <%= f.label :商品名%>
+  <%= f.text_field :name, class: "form-control" %>
+  <%= f.submit "登録", class: "btn btn-primary"%>
+<% end %>
