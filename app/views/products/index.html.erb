@@ -1,6 +1,6 @@
 <%= flash[:notice]%>
-<h1>在庫一覧</h1>
-<%= link_to("新規登録", "/products/new", class:"btn btn-primary") %>
+<h1 class="mt-2">在庫一覧</h1>
+<%= link_to("新規登録", "/products/new", class:"mb-2 btn btn-primary") %>
 
 <table class="table">
 <thead>
@@ -14,7 +14,7 @@
 <tbody>
     <% @products.each do |product| %>
         <tr>
-            <td></td>
+            <td><%= product.maker_id%></td>
             <td><%= product.product_code%></td>
             <td><%= product.name%></td>
             <td><%= link_to("編集", "/products/#{product.id}/edit", class:"btn btn-primary" )%>
