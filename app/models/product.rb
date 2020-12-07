@@ -4,4 +4,5 @@ class Product < ApplicationRecord
     validates :maker_id, presence: true
 
     belongs_to :maker
+    belongs_to :category
 end
