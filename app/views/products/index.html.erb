@@ -5,6 +5,7 @@
 <table class="table">
 <thead>
   <tr>
+      <th>カテゴリー</th>
       <th>メーカー</th>
       <th>商品コード</th>
       <th>商品名</th>
@@ -14,6 +15,7 @@
 <tbody>
     <% @products.each do |product| %>
         <tr>
+            <td><%= product.category_id%></td>
             <td><%= product.maker_id%></td>
             <td><%= product.product_code%></td>
             <td><%= product.name%></td>

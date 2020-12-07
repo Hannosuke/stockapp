@@ -36,11 +36,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:product_code, :name, :maker_id)
-  end
-
-  def maker_params
-    params.permit(:id)
+    params.require(:product).permit(:product_code, :name, :maker_id, :category_id)
   end
 
 end
