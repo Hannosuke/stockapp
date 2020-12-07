@@ -42,7 +42,7 @@ class ProductsController < ApplicationController
   end
 
   def maker_params
-    params.require(:maker).permit(:name)
+    params.permit(:name)
   end
 
 end
