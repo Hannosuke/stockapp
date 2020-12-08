@@ -9,16 +9,20 @@
       <th>メーカー</th>
       <th>商品コード</th>
       <th>商品名</th>
+      <th>単価</th>
+      <th>在庫数</th>
       <th></th>
   </tr>
 </thead>
 <tbody>
     <% @products.each do |product| %>
         <tr>
-            <td><%= product.category_id%></td>
-            <td><%= product.maker_id%></td>
+            <td><%= product.category.name%></td>
+            <td><%= product.maker.name%></td>
             <td><%= product.product_code%></td>
             <td><%= product.name%></td>
+            <td></td>
+            <td></td>
             <td><%= link_to("編集", "/products/#{product.id}/edit", class:"btn btn-primary" )%>
             <%= link_to("削除","/products/#{product.id}",{method: "DELETE", data: {confirm: "削除しますか？"}, class:"btn btn-danger"}) %>
             </td>
