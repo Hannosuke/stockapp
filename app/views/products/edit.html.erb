@@ -1,6 +1,8 @@
-<h1>編集</h1>
+<h1 class="mt-2">編集</h1>
 <%= link_to("一覧に戻る", "/")%>
 <%= form_with(model: @product, local: true) do |f| %>
+  <%= f.label :カテゴリー%><br>
+  <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true%><br>
   <%= f.label :メーカー%><br>
   <%= f.collection_select :maker_id, Maker.all, :id, :name %><br>
   <%= f.label :商品コード%>
