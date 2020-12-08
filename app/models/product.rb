@@ -5,4 +5,5 @@ class Product < ApplicationRecord
 
     belongs_to :maker
     belongs_to :category
+    has_one :price
 end
