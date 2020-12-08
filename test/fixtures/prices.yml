@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  price: MyString
-  decimal: MyString
+  price: 9.99
+  reference: 
 
 two:
-  price: MyString
-  decimal: MyString
+  price: 9.99
+  reference: 
