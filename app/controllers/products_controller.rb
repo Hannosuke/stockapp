@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    @products = Product.all.order(id: :asc)
   end
 
   def new
@@ -9,7 +9,8 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    if @product.save
+    @product.build_price
+    if @product&.save
       flash[:notice] = "商品情報を登録しました"
       redirect_to("/")
     else
