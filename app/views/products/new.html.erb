@@ -10,6 +10,8 @@
   <%= f.label :商品名%>
   <%= f.text_field :name, class: "form-control" %>
   <%= f.label :単価%>
-  <%= f.text_field :id, class: "form-control"%>
+  <%= f.fields_for :price do |p|%>
+    <%= p.text_field :price, class:"form-control"%>
+  <% end %>
   <%= f.submit "登録", class: "mt-2 btn btn-primary"%>
 <% end %>
