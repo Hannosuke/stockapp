@@ -5,11 +5,11 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.build_price
   end
 
   def create
     @product = Product.new(product_params)
-    @product.build_price
     if @product&.save
       flash[:notice] = "商品情報を登録しました"
       redirect_to("/")
@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:product_code, :name, :maker_id)
+    params.require(:product).permit(:product_code, :name, :maker_id, :category_id, price_attributes: [:price])
   end
 
   def maker_params
