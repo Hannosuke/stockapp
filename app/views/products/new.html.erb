@@ -13,5 +13,9 @@
   <%= f.fields_for :price do |p|%>
     <%= p.text_field :price, class:"form-control"%>
   <% end %>
+  <%= f.label :在庫数%>
+  <%= f.fields_for :stock do |s|%>
+    <%= s.text_field :stock, class:"form-control"%>
+  <% end %>
   <%= f.submit "登録", class: "mt-2 btn btn-primary"%>
 <% end %>
