@@ -25,13 +25,15 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    @product.update(product_params)
+    @product.update(update_product_params)
+    flash[:notice] = "商品情報を更新しました"
     redirect_to("/")
   end
 
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
+    flash[:notice] = "商品情報を削除しました"
     redirect_to("/")
   end
 
@@ -41,8 +43,8 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:product_code, :name, :maker_id, :category_id, price_attributes: [:price], stock_attributes: [:stock])
   end
 
-  def maker_params
-    params.permit(:id)
+  def update_product_params
+    params.require(:product).permit(:product_code, :name, :maker_id, :category_id, price_attributes: [:price, :_destroy, :id], stock_attributes: [:stock, :_destroy, :id])
   end
 
 end
