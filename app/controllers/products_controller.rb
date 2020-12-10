@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.build_price
+    @product.build_stock
   end
 
   def create
@@ -37,7 +38,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:product_code, :name, :maker_id, :category_id, price_attributes: [:price])
+    params.require(:product).permit(:product_code, :name, :maker_id, :category_id, price_attributes: [:price], stock_attributes: [:stock])
   end
 
   def maker_params
