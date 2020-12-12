@@ -1,6 +1,14 @@
 <%= flash[:notice]%>
 <h1 class="mt-2">在庫一覧</h1>
-<%= link_to("新規商品登録", "/products/new", class:"mb-2 btn btn-primary") %>
+<%= search_form_for(@q) do |f|%>
+    <%= f.label :name_cont, '商品名で検索', class: "col-sm-2 col-form-lagel"%>
+    <div class="col-cm-10">
+        <%= f.search_field :name_cont, class: "form-control"%>
+    </div>
+    <%= f.submit "検索", class: "btn btn-info mt-2 mb-2"%>
+<% end %>
+
+<%= link_to("新規商品登録", "/products/new", class: "mb-2 btn btn-primary") %>
 
 <table class="table">
 <thead>

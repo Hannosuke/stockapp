@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all.order(id: :asc)
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true)
   end
 
   def new
