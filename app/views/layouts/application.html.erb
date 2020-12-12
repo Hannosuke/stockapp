@@ -14,6 +14,12 @@
   <body>
    <div class="navbar navbar-expand-md navbar-light bg-light">
       <div class="navbar-brand">在庫管理アプリケーション</div>
+      <% if session[:user_id]%>
+          現在ログインしているユーザーのID:<%= session[:user_id]%>
+          <%= link_to("ログアウト", "logout",method: :delete, class:"nav-link")%>
+      <% else %>
+          <%= link_to("ログイン", "login", class:"nav-link")%>
+      <% end %>
     </div>
     <div class="container">
       <%= yield %>
