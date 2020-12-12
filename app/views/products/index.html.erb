@@ -21,6 +21,9 @@
       <th>単価</th>
       <th>在庫数</th>
       <th></th>
+      <% if session[:user_id]%>
+        <th></th>
+      <% end %>
   </tr>
 </thead>
 <tbody>
@@ -36,6 +39,9 @@
             <td><%= link_to("編集", "/products/#{product.id}/edit", class:"btn btn-primary" )%>
             <%= link_to("削除","/products/#{product.id}",{method: "DELETE", data: {confirm: "削除しますか？"}, class:"btn btn-danger"}) %>
             </td>
+            <% if session[:user_id]%>
+             <td><%= link_to("購入する", "#", class:"btn btn-success")%></td>
+            <% end %>
         </tr>
     <% end %>
 </tbody>
