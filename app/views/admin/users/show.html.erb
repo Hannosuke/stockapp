@@ -1,2 +1,4 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<h2><%= current_user.name%></h2>
+<p><%= current_user.email%></p>
+<p>お届け先住所</p>
+<p><%= link_to("注文履歴", "#")%></p>
