@@ -40,7 +40,7 @@
             <%= link_to("削除","/products/#{product.id}",{method: "DELETE", data: {confirm: "削除しますか？"}, class:"btn btn-danger"}) %>
             </td>
             <% if session[:user_id]%>
-             <td><%= link_to("購入する", "#", class:"btn btn-success")%></td>
+             <td><%= link_to("購入する", "#", data: {confirm: "購入が確定されます。よろしいですか？"},class:"btn btn-success")%></td>
             <% end %>
         </tr>
     <% end %>
