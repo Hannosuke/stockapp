@@ -19,7 +19,9 @@
       <th>商品名</th>
       <th>単価</th>
       <th>在庫数</th>
-      <th></th>
+      <% if session[:user_id] && current_user.admin? %>
+        <th></th>
+      <% end %>
       <% if session[:user_id]%>
         <th></th>
       <% end %>
@@ -35,9 +37,11 @@
             <td><%= product.name%></td>
             <td><%= product.price&.price%></td>
             <td><%= product.stock&.stock%></td>
-            <td><%= link_to("編集", "/products/#{product.id}/edit", class:"btn btn-primary" )%>
-            <%= link_to("削除","/products/#{product.id}",{method: "DELETE", data: {confirm: "削除しますか？"}, class:"btn btn-danger"}) %>
-            </td>
+            <% if session[:user_id] && current_user.admin? %>
+                <td><%= link_to("編集", "/products/#{product.id}/edit", class:"btn btn-primary" )%>
+                <%= link_to("削除","/products/#{product.id}",{method: "DELETE", data: {confirm: "削除しますか？"}, class:"btn btn-danger"}) %>
+                </td>
+            <% end %>
             <% if session[:user_id]%>
              <td><%= button_to "購入する", "/purchase/#{product.stock.id}", class:"btn btn-success"%></td>
             <% end %>
