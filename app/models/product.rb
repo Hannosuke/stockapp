@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-    validates :product_code, presence: true
+    validates :product_code, presence: true, uniqueness: true
     validates :name, presence: true
     validates :maker_id, presence: true
 
