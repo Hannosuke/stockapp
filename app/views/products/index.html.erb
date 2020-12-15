@@ -9,6 +9,11 @@
 
 <%= link_to("新規商品登録", "/products/new", class: "mb-2 btn btn-primary") %>
 
+<div class="mb-3">
+    <%= paginate @products%>
+    <%= page_entries_info @products%>
+</div>
+
 <table class="table">
 <thead>
   <tr>
