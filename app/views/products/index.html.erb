@@ -17,7 +17,8 @@
 <table class="table">
 <thead>
   <tr>
-      <th>#</th>
+      <th>#
+      </th>
       <th>カテゴリー</th>
       <th>メーカー</th>
       <th>商品コード</th>
@@ -40,7 +41,7 @@
             <td><%= product.maker.name%></td>
             <td><%= product.product_code%></td>
             <td><%= product.name%></td>
-            <td><%= product.price&.price%></td>
+            <td><%= product.price&.price.floor%></td>
             <td><%= product.stock&.stock%></td>
             <% if session[:user_id] && current_user.admin? %>
                 <td><%= link_to("編集", "/products/#{product.id}/edit", class:"btn btn-primary" )%>
