@@ -1,11 +1,9 @@
 class StocksController < ApplicationController
   def update
     @stock = Stock.find(params[:id])
-    @stock[:stock] -= 1
-    @stock.save
+    @stock.purchase
     flash[:notice] = "商品を購入しました"
     redirect_to("/")
   end
 
-  
 end

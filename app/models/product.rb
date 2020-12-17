@@ -10,4 +10,6 @@ class Product < ApplicationRecord
     has_one :stock
     accepts_nested_attributes_for :price
     accepts_nested_attributes_for :stock
+
+    has_one_attached :image
 end

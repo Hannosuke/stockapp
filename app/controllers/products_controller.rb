@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   def index
     @q = Product.ransack(params[:q])
+    @categories = Category.all
     @products = @q.result(distinct: true).page(params[:page]).per(5)
   end
 
@@ -41,7 +42,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:product_code, :name, :maker_id, :category_id, price_attributes: [:price], stock_attributes: [:stock])
+    params.require(:product).permit(:product_code, :name, :maker_id, :category_id, :image, price_attributes: [:price], stock_attributes: [:stock])
   end
 
   def update_product_params

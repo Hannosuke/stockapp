@@ -38,7 +38,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def require_admin
-    redirect_to("/") unless crrent_user.admin?
+    redirect_to("/") unless current_user.admin?
   end
 
 end

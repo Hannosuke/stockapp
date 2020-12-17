@@ -17,5 +17,7 @@
   <%= f.fields_for :stock do |s|%>
     <%= s.text_field :stock, class:"form-control"%>
   <% end %>
+  <%= f.label :image%>
+  <%= f.file_field :image, class:"form-control"%>
   <%= f.submit "変更を確定", class: "mt-2 btn btn-primary"%>
 <% end %>
