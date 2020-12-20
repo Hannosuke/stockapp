@@ -17,52 +17,52 @@
 </div>
 
 <table class="table">
-<thead>
-  <tr>
-      <% if session[:user_id] && current_user.admin? %>
-        <th>#</th>
-      <% end%>
-      <th><%= Category.human_attribute_name(:name)%></th>
-      <th><%= Maker.human_attribute_name(:name)%></th>
-      <th><%= Product.human_attribute_name(:product_code)%></th>
-      <th><%= Product.human_attribute_name(:name)%></th>
-      <th><%= Price.human_attribute_name(:price)%></th>
-      <% if session[:user_id] && current_user.admin? %>
-      <th><%= Stock.human_attribute_name(:stock)%></th>
+    <thead>
+    <tr>
+        <% if session[:user_id] && current_user.admin? %>
+            <th>#</th>
+        <% end%>
+        <th><%= Category.human_attribute_name(:name)%></th>
+        <th><%= Maker.human_attribute_name(:name)%></th>
+        <th><%= Product.human_attribute_name(:product_code)%></th>
+        <th><%= Product.human_attribute_name(:name)%></th>
+        <th><%= Price.human_attribute_name(:price)%></th>
+        <% if session[:user_id] && current_user.admin? %>
+        <th><%= Stock.human_attribute_name(:stock)%></th>
+            <th></th>
+        <% end %>
         <th></th>
-      <% end %>
-      <th></th>
-      <% if session[:user_id]%>
-        <th></th>
-      <% end %>
-  </tr>
-</thead>
-<tbody>
-    <% @products.each do |product| %>
-        <tr>
-            <% if session[:user_id] && current_user.admin? %>
-                <td><%= product.id%></td>
-            <% end %>
-            <td><%= product.category.name%></td>
-            <td><%= product.maker.name%></td>
-            <td><%= product.product_code%></td>
-            <td><%= product.name%></td>
-            <td><%= product.price&.price.floor%></td>
-            <% if session[:user_id] && current_user.admin? %>
-                <td><%= product.stock&.stock%></td>
-            <% end %>
-            <td><%= image_tag product.image if product.image.attached?%></td>
-            <% if session[:user_id] && current_user.admin? %>
-                <td>
-                    <%= link_to("編集", "/products/#{product.id}/edit", class:"btn btn-primary" )%>
-                    <%= link_to("削除","/products/#{product.id}",{method: "DELETE", data: {confirm: "削除しますか？"}, class:"btn btn-danger"}) %>
-                </td>
-            <% end %>
-            <% if session[:user_id]%>
-             <td><%= button_to "購入する", "/purchases/#{product.id}/create", data: {confirm: "購入します。よろしいですか？"}, class:"btn btn-success"%></td>
-            <% end %>
-        </tr>
-    <% end %>
-</tbody>
+        <% if session[:user_id]%>
+            <th></th>
+        <% end %>
+    </tr>
+    </thead>
+    <tbody>
+        <% @products.each do |product| %>
+            <tr>
+                <% if session[:user_id] && current_user.admin? %>
+                    <td><%= product.id%></td>
+                <% end %>
+                <td><%= product.category.name%></td>
+                <td><%= product.maker.name%></td>
+                <td><%= product.product_code%></td>
+                <td><%= product.name%></td>
+                <td><%= product.price&.price.floor%></td>
+                <% if session[:user_id] && current_user.admin? %>
+                    <td><%= product.stock&.stock%></td>
+                <% end %>
+                <td><%= image_tag product.image if product.image.attached?%></td>
+                <% if session[:user_id] && current_user.admin? %>
+                    <td>
+                        <%= link_to("編集", "/products/#{product.id}/edit", class:"btn btn-primary" )%>
+                        <%= link_to("削除","/products/#{product.id}",{method: "DELETE", data: {confirm: "削除しますか？"}, class:"btn btn-danger"}) %>
+                    </td>
+                <% end %>
+                <% if session[:user_id]%>
+                <td><%= button_to "購入する", "/purchases/#{product.id}/create", data: {confirm: "購入します。よろしいですか？"}, class:"btn btn-success"%></td>
+                <% end %>
+            </tr>
+        <% end %>
+    </tbody>
 </table>
 
