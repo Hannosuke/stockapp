@@ -1,5 +1,21 @@
-
-<%  @purchases.each do |purchase|%>
-    <% product = Product.find_by(id: purchase.product_id)%>
-        <%= product.name %>
-<% end %>
+<table class="table mt-5">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>商品名</th>
+            <th>購入日</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @purchases.each do |purchase|%>
+        <tr>
+            <td><%= purchase.id%></td>
+            <td>
+                <% product = Product.find_by(id: purchase.product_id)%>
+                <%= product.name %>
+            </td>
+            <td><%= purchase.created_at%></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
