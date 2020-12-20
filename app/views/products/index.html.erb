@@ -59,7 +59,7 @@
                 </td>
             <% end %>
             <% if session[:user_id]%>
-             <td><%= button_to "購入する", "/purchase/#{product.stock.id}", data: {confirm: "購入します。よろしいですか？"}, class:"btn btn-success"%></td>
+             <td><%= button_to "購入する", "/purchases/#{product.id}/create", data: {confirm: "購入します。よろしいですか？"}, class:"btn btn-success"%></td>
             <% end %>
         </tr>
     <% end %>

@@ -13,6 +13,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def purchases
+    @purchases = Purchase.where(user_id: current_user.id)
+  end
+
   def show
   end
 
