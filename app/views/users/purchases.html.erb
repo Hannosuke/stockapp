@@ -3,18 +3,22 @@
         <tr>
             <th>#</th>
             <th>商品名</th>
+            <th>価格</th>
             <th>購入日</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         <% @purchases.each do |purchase|%>
         <tr>
+            <% product = Product.find_by(id: purchase.product_id)%>
             <td><%= purchase.id%></td>
             <td>
-                <% product = Product.find_by(id: purchase.product_id)%>
                 <%= product.name %>
             </td>
+            <td><%= product.price.price.floor%></td>
             <td><%= purchase.created_at%></td>
+            <td><%= button_to "再購入する", "/purchases/#{product.id}/create", data: {confirm: "購入します。よろしいですか？"}, class:"btn btn-success"%></td>
         </tr>
         <% end %>
     </tbody>
