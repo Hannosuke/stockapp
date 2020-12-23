@@ -51,7 +51,7 @@
                 <% if session[:user_id] && current_user.admin? %>
                     <td><%= product.stock&.stock%></td>
                 <% end %>
-                <td><%= image_tag product.image if product.image.attached?%></td>
+                <td><%= image_tag product.image, size: "100x100" if product.image.attached?%></td>
                 <% if session[:user_id] && current_user.admin? %>
                     <td>
                         <%= link_to("編集", "/products/#{product.id}/edit", class:"btn btn-primary" )%>
@@ -59,7 +59,7 @@
                     </td>
                 <% end %>
                 <% if session[:user_id]%>
-                <td><%= button_to "購入する", "/purchases/#{product.id}/create", data: {confirm: "購入します。よろしいですか？"}, class:"btn btn-success"%></td>
+                <td><%= button_to "購入する", product_purchases_path(product.id), data: {confirm: "購入します。よろしいですか？"}, class:"btn btn-success"%></td>
                 <% end %>
             </tr>
         <% end %>

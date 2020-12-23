@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  post 'purchases/:product_id/create', to: 'purchases#create'
+ # post 'purchases/:product_id/create', to: 'purchases#create'
 
   get  'users/:id/purchases', to: 'users#purchases'
 
@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'products#index'
-  resources :products
+  resources :products do
+    resources :purchases, only: :create
+  end
   resources :users
 end

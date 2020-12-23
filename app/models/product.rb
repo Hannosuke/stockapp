@@ -8,6 +8,7 @@ class Product < ApplicationRecord
     belongs_to :category
     has_one :price
     has_one :stock
+    has_many :purchases
     accepts_nested_attributes_for :price
     accepts_nested_attributes_for :stock
 
